@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2em;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prediction Results</h1>
+
+    <h2>Your Input Data:</h2>
+    <table>
+        <tr>
+            <th>Feature</th>
+            <th>Value</th>
+        </tr>
+        {% for key, value in input_data.items() %}
+        <tr>
+            <td>{{ key.replace('_', ' ').title() }}</td>
+            <td>{{ value }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Model Predictions:</h2>
+    <ul>
+        <li><strong>Logistic Regression Model:</strong> {{ response['logistic_model_prediction'] }}</li>
+        <li><strong>Decision Tree Model:</strong> {{ response['decision_tree_prediction'] }}</li>
+    </ul>
+
+    <a href="/">Back to Prediction Form</a>
+</body>
+</html>
